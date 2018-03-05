@@ -30,9 +30,10 @@ namespace ALevelProject
             instructionsText.DataContext = instructionsP;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Search search = new Search();
+            search.Show();
         }
     }
 }
