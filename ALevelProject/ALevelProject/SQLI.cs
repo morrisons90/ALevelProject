@@ -10,13 +10,15 @@ namespace ALevelProject
 {
     static class SQLI
     {
+        //Creates a new connection object
         private static SqlConnection NewConnection()
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Josh\source\repos\ALevelProject\ALevelProject\ALevelProject\Database1.mdf;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\morri\Source\Repos\ALevelProject\ALevelProject\ALevelProject\Database1.mdf;Integrated Security=True");
             conn.Open();
 
             return conn;
         }
+        //Returns a single row in the form of a list
         public static ArrayList SingleResultQuery(String query)
         {
             SqlConnection conn = NewConnection();
@@ -39,6 +41,35 @@ namespace ALevelProject
                 return (new ArrayList {"Fail"});
             }
 
+        }
+        //Returns a reader object
+        public static List<T> searchQuery<T>(String query)
+        {
+            SqlConnection conn = NewConnection();
+
+            SqlCommand command = new SqlCommand(query, conn);
+
+            try
+            {
+                var result = command.ExecuteReader();
+                List<T> resultArray = new List<T>();
+                while(result.Read())
+                {
+                    List<string> fields = new List<string>();
+                    for(var i=0; i<result.FieldCount; i++)
+                    {
+                        fields.Add(result.GetString(i));
+                    }
+                    T resultObject = (T)Activator.CreateInstance(typeof(T), fields);
+                    resultArray.Add(resultObject);
+                }
+                return resultArray;
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
         }
     }
 }

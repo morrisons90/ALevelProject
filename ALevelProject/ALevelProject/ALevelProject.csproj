@@ -69,10 +69,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Products.cs" />
     <Compile Include="Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SearchControler.cs" />
+    <Compile Include="SearchData.cs" />
+    <Compile Include="SearchParams.cs" />
     <Compile Include="SQLI.cs" />
+    <Compile Include="Store.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

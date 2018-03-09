@@ -22,6 +22,7 @@ namespace ALevelProject
         public Search()
         {
             InitializeComponent();
+            SearchControler.Search(new SearchParams {ProductID = "MM0000"});
         }
     }
 }
