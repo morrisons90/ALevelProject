@@ -8,5 +8,6 @@ namespace ALevelProject
 {
     public class SearchData
     {
+        public int SearchType { get; set; }
     }
 }

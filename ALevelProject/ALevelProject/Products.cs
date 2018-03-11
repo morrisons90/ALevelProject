@@ -6,21 +6,25 @@ using System.Threading.Tasks;
 
 namespace ALevelProject
 {
-    class Products : SearchData 
+    public class Products : SearchData 
     {
-        string ProductID { get; set; }
-        string ProductName { get; set; }
-        string Type { get; set; }
-        string Colour { get; set; }
-        string Range { get; set; }
+        public string ProductID { get; set; }
+        public string ProductName { get; set; }
+        public string Type { get; set; }
+        public string Colour { get; set; }
+        public string Range { get; set; }
+        public string Date { get; set; }
 
-        public Products(string[] row)
+        public Products(string id,string name, string type, string colour, string range, string date)
         {
-            this.ProductID = row[0];
-            this.ProductName = row[1];
-            this.Type = row[2];
-            this.Colour = row[3];
-            this.Range = row[4];
+            this.ProductID = id;
+            this.ProductName = name;
+            this.Type = type;
+            this.Colour = colour;
+            this.Range = range;
+            this.Date = date;
+
+            this.SearchType = 0;
         }
 
     }

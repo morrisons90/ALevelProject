@@ -13,7 +13,7 @@ namespace ALevelProject
         //Creates a new connection object
         private static SqlConnection NewConnection()
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\morri\Source\Repos\ALevelProject\ALevelProject\ALevelProject\Database1.mdf;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Josh\source\repos\ALevelProject\ALevelProject\ALevelProject\Database1.mdf;Integrated Security=True");
             conn.Open();
 
             return conn;
@@ -60,7 +60,7 @@ namespace ALevelProject
                     {
                         fields.Add(result.GetString(i));
                     }
-                    T resultObject = (T)Activator.CreateInstance(typeof(T), fields);
+                    T resultObject = (T)Activator.CreateInstance(typeof(T), fields.ToArray());
                     resultArray.Add(resultObject);
                 }
                 return resultArray;

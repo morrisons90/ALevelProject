@@ -22,7 +22,66 @@ namespace ALevelProject
         public Search()
         {
             InitializeComponent();
-            SearchControler.Search(new SearchParams {ProductID = "MM0000"});
+        }
+        private void UpdateResults(object sender, TextChangedEventArgs e)
+        {
+            SearchParams search = new SearchParams()
+            {
+                ProductID = ProductID.Text,
+                ProductName = ProductName.Text,
+                Type = Type.Text,
+                Colour = Colour.Text,
+                Range = Range.Text,
+                Date = Date.Text,
+                StoreCode = StoreCode.Text,
+                StoreName = StoreName.Text,
+                TownCity = TownCity.Text,
+                PostCode = Postcode.Text
+            };
+            var ProductFilterEntered = false;
+            var StoreFilterEntered = false;
+            if(ProductID.Text != "" || ProductName.Text != "" || Type.Text != "" || Colour.Text != "" || Range.Text != "")
+            {
+                ProductFilterEntered = true;
+            }
+            if(StoreCode.Text != "" || StoreName.Text != "" || TownCity.Text != "" || Postcode.Text != "")
+            {
+                StoreFilterEntered = true;
+            }
+            if (ProductFilterEntered && !StoreFilterEntered)
+            {
+                search.SearchType = 0;
+            }
+            if (!ProductFilterEntered && StoreFilterEntered)
+            {
+                search.SearchType = 1;
+            }
+            if(ProductFilterEntered && StoreFilterEntered)
+            {
+                search.SearchType = 2;
+            }
+            var resultsSource = SearchControler.Search(search);
+            if (resultsSource != null && resultsSource.Count != 0)
+            {
+                switch (resultsSource[0].SearchType)
+                {
+                    case 0:
+                        {
+                            List<Products> products = resultsSource.Cast<Products>().ToList();
+                            ResultViewer.View = this.FindResource("Product") as ViewBase;
+                            ResultViewer.ItemsSource = products;
+                            break;
+                        }
+                    case 1:
+                        {
+                            List<Store> stores = resultsSource.Cast<Store>().ToList();
+                            ResultViewer.View = this.FindResource("Store") as ViewBase;
+                            ResultViewer.ItemsSource = stores;
+                            break;
+                        }
+                }
+            }
         }
     }
+
 }

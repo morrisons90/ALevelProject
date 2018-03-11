@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace ALevelProject
 {
-    class Store : SearchData
+    public class Store : SearchData
     {
-        public string storeID { get; set;}
-        public string storeName { get; set;}
-        public string cityTown { get; set;}
-        public string postcode { get; set;}
+        public string StoreCode { get; set;}
+        public string StoreName { get; set;}
+        public string TownCity { get; set;}
+        public string PostCode { get; set;}
 
-        public Store(string[] row)
+        public Store(string storeid, string storename, string towncity, string postcode)
         {
-            this.storeID = row[0];
-            this.storeName = row[1];
-            this.cityTown = row[2];
-            this.postcode = row[3];
+            this.StoreCode = storeid;
+            this.StoreName = storename;
+            this.TownCity = towncity;
+            this.PostCode = postcode;
+
+            this.SearchType = 1;
         }
 
     }
