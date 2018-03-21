@@ -1,0 +1,1 @@
+﻿INSERT INTO Products (ProductId, ProductName, Type, Colour, Range, Date) VALUES ('MM0001', 'Test Product 2', 'Test Type', 'Black', 'Test Range', 'Date')
