@@ -41,7 +41,7 @@
             <GridViewColumn Header="Store Name" Width="90" DisplayMemberBinding="{Binding StoreName}"/>
             <GridViewColumn Header="Town/City" Width="90" DisplayMemberBinding="{Binding TownCity}"/>
             <GridViewColumn Header="Postcode" Width="90" DisplayMemberBinding="{Binding PostCode}"/>
-        </GridView>
+        </GridView>              
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -136,6 +136,21 @@
                 </StackPanel>
             </ScrollViewer>
             <ListView Grid.Column="1" Name="ResultViewer">
+            </ListView>
+            <ListView Grid.Column="1" Name="ListViewer">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>                            
+                            <Label Content="{Binding StoreCode}"/>
+                            <Label Content="{Binding StoreName}"/>
+                            <Label Content="{Binding TownCity}"/>
+                            <Label Content="{Binding PostCode}"/>
+                            <ListView>
+                                
+                            </ListView>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </Grid>
     </Grid>

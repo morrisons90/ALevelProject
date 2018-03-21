@@ -69,6 +69,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdvancedSearch.cs" />
+    <Compile Include="Filter.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
@@ -77,6 +79,7 @@
     <Compile Include="SearchData.cs" />
     <Compile Include="SearchParams.cs" />
     <Compile Include="SQLI.cs" />
+    <Compile Include="Stock.cs" />
     <Compile Include="Store.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -68,6 +68,8 @@ namespace ALevelProject
                     case 0:
                         {
                             List<Products> products = resultsSource.Cast<Products>().ToList();
+                            ResultViewer.Visibility = Visibility.Visible;
+                            ListViewer.Visibility = Visibility.Collapsed;
                             ResultViewer.View = this.FindResource("Product") as ViewBase;
                             ResultViewer.ItemsSource = products;
                             break;
@@ -75,11 +77,25 @@ namespace ALevelProject
                     case 1:
                         {
                             List<Store> stores = resultsSource.Cast<Store>().ToList();
+                            ResultViewer.Visibility = Visibility.Visible;
+                            ListViewer.Visibility = Visibility.Collapsed;
                             ResultViewer.View = this.FindResource("Store") as ViewBase;
                             ResultViewer.ItemsSource = stores;
                             break;
                         }
+                    case 2:
+                        {
+                            List<AdvancedSearch> AdvancedS = resultsSource.Cast<AdvancedSearch>().ToList();
+                            ResultViewer.Visibility = Visibility.Collapsed;
+                            ListViewer.Visibility = Visibility.Visible;
+                            ListViewer.ItemsSource = AdvancedS;
+                            break;
+                        }
+
                 }
+            } else
+            {
+                ResultViewer.ItemsSource = null;
             }
         }
     }

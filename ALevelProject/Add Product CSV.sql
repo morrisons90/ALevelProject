@@ -1,6 +1,6 @@
 ﻿BULK
-INSERT Stores
-FROM 'C:\Users\Josh\Downloads\test data - Sheet3.csv'
+INSERT Stock
+FROM 'C:\Users\Josh\Desktop\stock.csv'
 WITH
 (
 FIELDTERMINATOR = ',',
