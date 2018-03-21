@@ -145,7 +145,7 @@
                             <Label Content="{Binding StoreName}"/>
                             <Label Content="{Binding TownCity}"/>
                             <Label Content="{Binding PostCode}"/>
-                            <ListView>
+                            <ListView x: >
                                 
                             </ListView>
                         </StackPanel>
