@@ -42,7 +42,7 @@ namespace ALevelProject
             }
 
         }
-        //Returns a reader object
+        //Returns a results object
         public static List<T> searchQuery<T>(String query)
         {
             SqlConnection conn = NewConnection();
@@ -58,7 +58,14 @@ namespace ALevelProject
                     List<string> fields = new List<string>();
                     for(var i=0; i<result.FieldCount; i++)
                     {
-                        fields.Add(result.GetString(i));
+                        if(result.GetFieldType(i) == typeof(string))
+                        {
+                            fields.Add(result.GetString(i));
+                        } else
+                        {
+                            fields.Add(result.GetInt32(i).ToString());
+                        }
+                        
                     }
                     T resultObject = (T)Activator.CreateInstance(typeof(T), fields.ToArray());
                     resultArray.Add(resultObject);
