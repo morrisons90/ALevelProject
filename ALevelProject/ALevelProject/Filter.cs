@@ -12,18 +12,7 @@ namespace ALevelProject
         static public List<SearchData> FilterSort(List<Products> products, List<Store> store, List<Stock> stock)
         {
             return CreateAdvancedSearch(store, CreateProductHash(products), stock);           
-        }
-        static private Hashtable CreateStockHash(List<List<int>> stock)
-        {
-            Hashtable stockHash = new Hashtable();
-
-            for(int i = 0; i < stock.Count; i++)
-            {
-                stockHash.Add(stock[i][1], stock[i][2]);
-            }
-
-            return stockHash;
-        }
+        }        
         static private Hashtable CreateProductHash(List<Products> products)
         {
             Hashtable productHash = new Hashtable();

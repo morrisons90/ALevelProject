@@ -135,23 +135,45 @@
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
-            <ListView Grid.Column="1" Name="ResultViewer">
-            </ListView>
-            <ListView Grid.Column="1" Name="ListViewer">
-                <ListView.ItemTemplate>
+            <ListView Grid.Column="1" Name="ResultViewer"/>
+            <TreeView Grid.Column="1" Name="ListViewer" Visibility="Collapsed">
+                <TreeView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>                            
-                            <Label Content="{Binding StoreCode}"/>
-                            <Label Content="{Binding StoreName}"/>
-                            <Label Content="{Binding TownCity}"/>
-                            <Label Content="{Binding PostCode}"/>
-                            <ListView x: >
-                                
-                            </ListView>
-                        </StackPanel>
+                        <Grid Width="600">                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="{Binding StoreCode}"/>
+                                <Label Grid.Column="1" Content="{Binding StoreName}"/>
+                                <Label Grid.Column="2" Content="{Binding TownCity}"/>
+                                <Label Grid.Column="3" Content="{Binding PostCode}"/>
+                            </Grid>
+                            <ListBox Grid.Row="1" ItemsSource="{Binding Products}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Content="{Binding ProductID}"/>
+                                            <Label Grid.Column="1" Content="{Binding ProductName}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>                        
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </TreeView.ItemTemplate>
+            </TreeView>
         </Grid>
     </Grid>
 </Window>
