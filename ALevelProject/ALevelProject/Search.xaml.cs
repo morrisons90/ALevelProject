@@ -98,6 +98,11 @@ namespace ALevelProject
                 ResultViewer.ItemsSource = null;
             }
         }
+
+        private void MenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 
 }
